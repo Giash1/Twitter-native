@@ -1,0 +1,21 @@
+{
+    "build": {
+        "crossplatform-web":{
+            "android":{
+                "buildType":"apk"
+            }
+        },
+"crossplatform-web2":{
+            "android":{
+                "gradleCommand":
+                ":app:assembleRelease"
+            }
+
+    },
+    "crossplatform-web3":{
+            "developmentClient":true},
+            "production":{}
+    }
+
+
+}
