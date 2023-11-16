@@ -32,7 +32,6 @@ export const PostForm = (props) => {
     const postData = {
       text: postText,
         createdBy: loggedInAs?.id, // Se till att loggedInAs.id är giltig
-
       createdDate: new Date().toLocaleDateString(),
     };
 // adding console.log
@@ -40,7 +39,9 @@ export const PostForm = (props) => {
     console.log("Post data being sent:", postData);
 
     try {
-      await createPost({ post: postData });
+        await createPost({ post: postData });
+        // Reset the input field after successfully creating a post
+    setPostText("");
       toast.show("Post created successfully!", {
         type: "success",
         placement: "top",

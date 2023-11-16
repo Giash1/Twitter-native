@@ -29,7 +29,9 @@ const firebaseBaseQuery = async ({ baseUrl, url, method, body }) => {
 export const postsApi = createApi({
   tagTypes: ["posts"],
   reducerPath: "postsApi",
-  baseQuery: firebaseBaseQuery,
+    baseQuery: firebaseBaseQuery,
+
+    // all the enpoints
   endpoints: (builder) => ({
     // createUser endpoint: It's a mutation that allows creating a new user in the Firebase Firestore collection.
     createPost: builder.mutation({

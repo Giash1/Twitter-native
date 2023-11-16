@@ -12,7 +12,9 @@ import { UserForm } from "./src/components/screens/UseForm/UserForm";
 import { UserInfo } from "./src/components/screens/UserInfo/UserInfo";
 import { UserList } from "./src/components/screens/UserList/UserList";
 import { store, persistor } from "./src/store/store/store";
-
+import i18n from "./i18n";
+import { Settings } from "./src/components/screens/Settings/Settings"
+import { I18nextProvider } from "react-i18next";
 const UserListStack = createNativeStackNavigator();
 // navigator named UserListStack using the createNativeStackNavigator function is used to manage navigation within the UserList section of my app.
 const UserListScreen = () => {
@@ -24,6 +26,7 @@ const UserListScreen = () => {
       <UserListStack.Screen name="UserForm" component={UserForm} />
       <UserListStack.Screen name="PostForm" component={PostForm} />
       <UserListStack.Screen name="PostList" component={PostList} />
+      <UserListStack.Screen name="Settings" component={Settings} />
     </UserListStack.Navigator>
   );
 };
@@ -50,6 +53,7 @@ const NavigationWrapper = () => {
           // options for this tab, including showing the header.
         />
         <Tab.Screen name="PostList" component={PostList} />
+        <Tab.Screen name="Settings" component={Settings} />
         {loggedInAs && (
           // render a Tab.Screen based on whether a user is logged in.
           <Tab.Screen
@@ -80,8 +84,10 @@ function App() {
   return (
     <ToastProvider>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <NavigationWrapper />
+              <PersistGate loading={null} persistor={persistor}>
+                   <I18nextProvider i18n={i18n}>
+                  <NavigationWrapper />
+                  </I18nextProvider>
         </PersistGate>
       </Provider>
     </ToastProvider>

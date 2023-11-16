@@ -1,5 +1,5 @@
 import { Input, Button } from "@rneui/themed";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useTransition } from "react";
 import {
   Text,
   View,
@@ -13,10 +13,13 @@ import {
   useCreateUserMutation,
   useUpdateUserMutation,
 } from "../../../store/api/usersApi";
+import { useTranslation } from "react-i18next";
+
 
 export const UserForm = ({ route, navigation }) => {
   const { user: initialUser } = route.params || {};
   const lastNameRef = useRef(null);
+    const { t } = useTranslation();
 
   const [firstName, setFirstName] = useState(initialUser?.firstName || "");
   const [lastName, setLastName] = useState(initialUser?.lastName || "");
@@ -89,7 +92,7 @@ export const UserForm = ({ route, navigation }) => {
             placeholder="Last name"
           />
           <Button
-            title={initialUser ? "Save Changes" : "Create user"}
+            title={initialUser ? t("saveChanges") : t("createUser") }
             disabled={createLoading || updateLoading}
             loading={createLoading || updateLoading}
             onPress={() => handleSubmit()}
