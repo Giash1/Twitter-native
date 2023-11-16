@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 
 import { useCreatePostMutation } from "../../../store/api/postsApi";
 
-export const PostForm = () => {
+export const PostForm = (props) => {
   const loggedInAs = useSelector((state: any) => state.auth.loggedInAs);
   const [postText, setPostText] = useState("");
   const [createPost, { isLoading }] = useCreatePostMutation();
@@ -94,4 +94,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PostForm;
+// Define a new component and export it
+export const MyPostFormComponent = (props) => <PostForm {...props} />;

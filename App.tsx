@@ -6,8 +6,7 @@ import * as React from "react";
 import { ToastProvider } from "react-native-toast-notifications";
 import { Provider, useSelector } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-
-import { PostForm } from "./src/components/screens/PostForm/PostForm";
+import { MyPostFormComponent, PostForm } from "./src/components/screens/PostForm/PostForm";
 import { PostList } from "./src/components/screens/PostList/PostList";
 import { UserForm } from "./src/components/screens/UseForm/UserForm";
 import { UserInfo } from "./src/components/screens/UserInfo/UserInfo";
@@ -64,7 +63,8 @@ const NavigationWrapper = () => {
         )}
         <Tab.Screen
           name="PostForm"
-          component={(props) => <PostForm {...props} />}
+                  component={MyPostFormComponent}
+                //   new component from PostForm
           initialParams={{ loggedInAs }}
           options={{
             headerShown: true,
