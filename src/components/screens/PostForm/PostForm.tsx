@@ -31,10 +31,12 @@ export const PostForm = () => {
 
     const postData = {
       text: postText,
-      createdBy: loggedInAs?.id, // Se till att loggedInAs.id är giltig
+        createdBy: loggedInAs?.id, // Se till att loggedInAs.id är giltig
+
       createdDate: new Date().toLocaleDateString(),
     };
-
+// adding console.log
+    console.log("loggedInAS", "Sunny");
     console.log("Post data being sent:", postData);
 
     try {
